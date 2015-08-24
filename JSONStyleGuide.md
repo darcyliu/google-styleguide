@@ -652,7 +652,7 @@ data.items中第一个条目的索引。为了一致，*startIndex*应从1开始
 	  }
 	}
 	
-###data.totalItemsx###
+###data.totalItems###
 
 	属性值类型: 整数(integer)
 	父节点: data
