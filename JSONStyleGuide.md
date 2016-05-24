@@ -2,7 +2,7 @@
 
 版本：0.9
 
-英文版：[http://google-styleguide.googlecode.com/svn/trunk/jsoncstyleguide.xml](http://google-styleguide.googlecode.com/svn/trunk/jsoncstyleguide.xml)
+英文版：[https://google.github.io/styleguide/jsoncstyleguide.xml](https://google.github.io/styleguide/jsoncstyleguide.xml)
 
 
 翻译：Darcy Liu
