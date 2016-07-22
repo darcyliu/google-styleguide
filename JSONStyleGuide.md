@@ -1074,9 +1074,7 @@ report form的URI，服务用它来收集错误状态的数据。该URL会预先
 ###附录A:JavaScript中的保留字###
 **下列JavaScript保留字应该避免在属性名中使用**
 
-下面的但在在JavaScript语言中被保留，不能作为在点访问符中使用。这份名单代表此时的最佳关键字的知识;列表可能会改变或根据您的特定的执行环境更改。
-
-下面是JavaScript语言中的保留字，且不能在点访问符中使用。这份清单集合了当前最新的关键字，该清单可能会根据具体的执行环境而有所变更或改变。
+下面的清单是JavaScript中的保留字，并不能通过点访问符访问。这份清单集合了当前最新的关键字，该清单可能会根据具体的执行环境而有所变更。
 
 来自[ECMAScript 语言规范第五版](http://www.ecma-international.org/publications/standards/Ecma-262.htm)
 
