@@ -1,4 +1,4 @@
-#JSON风格指南#
+# JSON风格指南 #
 
 版本：0.9
 
@@ -9,11 +9,11 @@
 
 译文状态：草稿
 
-##简介##
+## 简介 ##
 
 该风格指南是对在Google创建JSON APIs而提供的指导性准则和建议。总体来讲，JSON APIs应遵循JSON.org上的规范。这份风格指南澄清和标准化了特定情况，从而使Google的JSON APIs有一种标准的外观和感觉。这些指南适用于基于RPC和基于REST风格的API的JSON请求和响应。
 
-##定义##
+## 定义 ##
 为了更好地实现这份风格指南的目的，下面几项需要说明：
 
 * 属性(property) - JSON对象内的键值对(name/value pair)
@@ -30,8 +30,8 @@
 	
 Javascript的数字(*number*)包含所有的浮点数,这是一个宽泛的指定。在这份指南中，数字(*number*)指代Javascript中的数字(*number*)类型，而整型(*integer*)则指代整型。
 
-##一般准则##
-###注释###
+## 一般准则 ##
+### 注释 ###
 **JSON对象中不包含注释。**
 
 JSON对象中不应该包含注释。该指南中的某些示例含有注释。但这仅仅是为了说明示例。
@@ -42,12 +42,12 @@ JSON对象中不应该包含注释。该指南中的某些示例含有注释。�
 	  "propertyName": "propertyValue"
 	}
 
-###双引号###
+### 双引号 ###
 **使用双引号**
 
 如果（某个）属性需要引号，则必须使用双引号。所有的属性名必须在双引号内。字符类型的属性值必须使用双引号。其它类型值（如布尔或数字）不应该使用双引号。
 
-###扁平化数据 VS 结构层次###
+### 扁平化数据 VS 结构层次 ###
 **不能为了方便而将数据任意分组**
 
 JSON中的数据元素应以*扁平化*方式呈现。不能为了方便而将数据任意分组。
@@ -80,9 +80,9 @@ JSON中的数据元素应以*扁平化*方式呈现。不能为了方便而将�
 	  }
 	}
 	
-##属性名准则##
+## 属性名准则 ##
 
-###属性名格式###
+### 属性名格式 ###
 **选择有意义的属性名**
 
 属性名必须遵循以下准则:
@@ -101,7 +101,7 @@ JSON中的数据元素应以*扁平化*方式呈现。不能为了方便而将�
 	  "thisPropertyIsAnIdentifier": "identifier value"
 	}
 	
-###JSON Map中的键名###
+### JSON Map中的键名 ###
 **在JSON Map中键名可以使用任意Unicode字符**
 
 当JSON对象作为Map(映射)使用时，属性的名称命名规则并不适用。Map（也称作关联数组）是一个具有任意键/值对的数据类型，这些键/值对通过特定的键来访问相应的值。JSON对象和JSON Map在运行时看起来是一样的；这个特性与API设计相关。当JSON对象被当作map使用时，API文件应当做出说明。
@@ -125,12 +125,12 @@ Map的键名不一定要遵循属性名称的命名准则。键名可以包含�
 	  }
 	}
 	
-###保留的属性名称###
+### 保留的属性名称 ###
 **某些属性名称会被保留以便能在多个服务间相容使用**
 
 保留属性名称的详细信息，连同完整的列表，可在本指南后面的内容中找到。服务应按照被定义的语义来使用属性名称。
 
-###单数属性名 VS 复数属性名###
+### 单数属性名 VS 复数属性名 ###
 **数组类型应该是复数属性名。其它属性名都应该是单数。**
 
 数组通常包含多个条目，复数属性名就反映了这点。在下面这个保留名称中可以看到例子。属性名*items*是复数因为它描述的是一组对象。大多数的其它字段是单数。
@@ -148,7 +148,7 @@ Map的键名不一定要遵循属性名称的命名准则。键名可以包含�
 	  "itemCount": 10
 	}
 
-###命名冲突###
+### 命名冲突 ###
 **通过选择新的属性名或将API版本化来避免命名冲突**
 
 新的属性可在将来被添加进保留列表中。JSON中不存在命名空间。如果存在命名冲突，可通过选择新的属性名或者版本化来解决这个问题。例如，假设我们由下面的JSON对象开始：
@@ -185,8 +185,8 @@ Map的键名不一定要遵循属性名称的命名准则。键名可以包含�
 	  }
 	}
 	
-##属性值准则##
-###属性值格式###
+## 属性值准则 ##
+### 属性值格式 ###
 **属性值必须是Unicode 的 booleans（布尔）, 数字(numbers), 字符串(strings), 对象(objects), 数组(arrays), 或 null.**
 
 JSON.org上的标准准确地说明了哪些类型的数据可以作为属性值。这包含Unicode的布尔(booleans), 数字(numbers), 字符串(strings), 对象(objects), 数组(arrays), 或 null。JavaScript表达式是不被接受的。APIs应该支持该准则，并为某个特定的属性选择最合适的数据类型（比如，用numbers代表numbers等）。
@@ -209,7 +209,7 @@ JSON.org上的标准准确地说明了哪些类型的数据可以作为属性值
 	  "functionFoo": function() { return 1; } // Bad - JavaScript 函数
 	}
 	
-###空或Null 属性值###
+### 空或Null 属性值 ###
 **考虑移除空或null值**
 
 如果一个属性是可选的或者包含空值或*null*值，考虑从JSON中去掉该属性，除非它的存在有很强的语义原因。
@@ -226,7 +226,7 @@ JSON.org上的标准准确地说明了哪些类型的数据可以作为属性值
 	  // "currentlyPlaying": null
 	}
 	
-###枚举值###
+### 枚举值 ###
 **枚举值应当以字符串的形式呈现**
 
 随着APIs的发展，枚举值可能被添加，移除或者改变。将枚举值当作字符串可以使下游用户幽雅地处理枚举值的变更。
@@ -247,11 +247,11 @@ JSON对象：
 	  "color": "WHITE"
 	}
 	
-##属性值数据类型##
+## 属性值数据类型 ##
 
 上面提到，属性值必须是布尔(booleans), 数字(numbers), 字符串(strings), 对象(objects), 数组(arrays), 或 null. 然而在处理某些值时，定义一组标准的数据类型是非常有用的。这些数据类型必须始终是字符串，但是为了便于解析，它们也会以特定的方式被格式化。
 
-###日期属性值###
+### 日期属性值 ###
 **日期应该使用RFC3339建议的格式**
 
 日期应该是RFC 3339所建议的字符串格式。
@@ -260,7 +260,7 @@ JSON对象：
 	  "lastUpdate": "2007-11-06T16:34:41.000Z"
 	}
 	
-###时间间隔属性值###
+### 时间间隔属性值 ###
 **时间间隔应该使用ISO 8601建议的格式**
 
 时间间隔应该是ISO 8601所建议的字符串格式。
@@ -271,7 +271,7 @@ JSON对象：
 	  "duration": "P3Y6M4DT12H30M5S"
 	}
 	
-###纬度/经度属性值###
+### 纬度/经度属性值 ###
 **纬度/经度应该使用ISO 6709建议的格式**
 
 纬度/经度应该是ISO 6709所建议的字符串格式。
@@ -282,7 +282,7 @@ JSON对象：
 	  "statueOfLiberty": "+40.6894-074.0447"
 	}
 	
-##JSON结构和保留属性名##
+## JSON结构和保留属性名 ##
 
 为了使APIs保持一致的借口，JSON对象应当使用以下的结构。该结构适用于JSON的请求和响应。在这个结构中，某些属性名将被保留用作特殊用途。这些属性并不是必需的，也就是说，每个保留的属性可能出现零次或一次。但是如果服务需要这些属性，建议遵循该命名条约。下面是一份JSON结构语义表，以Orderly格式呈现(现在已经被纳入 JSONSchema)。你可以在该指南的最后找到关于JSON结构的例子。
 
@@ -340,10 +340,10 @@ JSON对象：
 	
 JSON对象有一些顶级属性，然后是*data*对象或*error*对象，这两者不会同时出现。下面是这些属性的解释。
 
-##顶级保留属性名称##
+## 顶级保留属性名称 ##
 **顶级的JSON对象可能包含下面这些属性**
 
-###apiVersion###
+### apiVersion ###
 
 	属性值类型: 字符串(string)
 	父节点: -
@@ -354,7 +354,7 @@ JSON对象有一些顶级属性，然后是*data*对象或*error*对象，这两
 
 	{ "apiVersion": "2.1" }
 	
-###context###
+### context ###
 
 	属性值类型: 字符串(string)
 	父节点: -
@@ -399,7 +399,7 @@ JSON对象有一些顶级属性，然后是*data*对象或*error*对象，这两
 	  }
 	}
 
-###id###
+### id ###
 
 	属性值类型: 字符串(string)
 	父节点: -
@@ -410,7 +410,7 @@ JSON对象有一些顶级属性，然后是*data*对象或*error*对象，这两
 
 	{ "id": "1" }
 	
-###method###
+### method ###
 
 	属性值类型: 字符串(string)
 	父节点: -
@@ -427,7 +427,7 @@ JSON对象有一些顶级属性，然后是*data*对象或*error*对象，这两
 	  }
 	}
 
-###params###
+### params ###
 
 	属性值类型: 对象(object)
 	父节点: -
@@ -444,14 +444,14 @@ JSON对象有一些顶级属性，然后是*data*对象或*error*对象，这两
 	  }
 	}
 
-###data###
+### data ###
 
 	属性值类型: 对象(object)
 	父节点: -
 	
 包含响应的所有数据。该属性本身拥有许多保留属性名，下面会有相应的说明。服务可以自由地将自己的数据添加到这个对象。一个JSON响应要么应当包含一个*data*对象，要么应当包含*error*对象，但不能两者都包含。如果*data*和*error*同时出现，则*error*对象优先。
 
-###error###
+### error ###
 
 	属性值类型: 对象(object)
 	父节点: -
@@ -473,11 +473,11 @@ JSON对象有一些顶级属性，然后是*data*对象或*error*对象，这两
 	  }
 	}
 
-##data对象的保留属性名##
+## data对象的保留属性名 ##
 
 JSON对象的*data*属性可能包含以下属性。
 
-###data.kind###
+### data.kind ###
 
 	属性值类型: 字符串(sting)
 	父节点: data
@@ -489,7 +489,7 @@ JSON对象的*data*属性可能包含以下属性。
 	// "Kind" indicates an "album" in the Picasa API.
 	{"data": {"kind": "album"}}
 	
-###data.fields###
+### data.fields ###
 
 	属性值类型: 字符串(string)
 	父节点: data
@@ -507,7 +507,7 @@ JSON对象的*data*属性可能包含以下属性。
 	  }
 	}	
 	
-###data.etag###
+### data.etag ###
 
 	属性值类型: 字符串(string)
 	父节点: data
@@ -518,7 +518,7 @@ JSON对象的*data*属性可能包含以下属性。
 
 	{"data": {"etag": "W/"C0QBRXcycSp7ImA9WxRVFUk.""}}
 	
-###data.id###
+### data.id ###
 
 	属性值类型: 字符串(string)
 	父节点: data
@@ -529,7 +529,7 @@ JSON对象的*data*属性可能包含以下属性。
 
 	{"data": {"id": "12345"}}
 	
-###data.lang###
+### data.lang ###
 
 	属性值类型: 字符串(string)(格式由BCP 47指定)
 	父节点: data (或任何子元素)
@@ -547,7 +547,7 @@ JSON对象的*data*属性可能包含以下属性。
 	  ]}
 	}
 	
-###data.updated###
+### data.updated ###
 
 	属性值类型: 字符串(string)(格式由RFC 3339指定)
 	父节点: data
@@ -558,7 +558,7 @@ JSON对象的*data*属性可能包含以下属性。
 
 	{"data": {"updated": "2007-11-06T16:34:41.000Z"}}
 	
-###data.deleted###
+### data.deleted ###
 
 	属性值类型: 布尔(boolean)
 	父节点: data (或任何子元素)
@@ -575,7 +575,7 @@ JSON对象的*data*属性可能包含以下属性。
 	  ]}
 	}
 	
-###data.items###
+### data.items ###
 
 	属性值类型: 数组(array)
 	父节点: data
@@ -594,7 +594,7 @@ JSON对象的*data*属性可能包含以下属性。
 	  }
 	}
 	
-##用于分页的保留属性名##
+## 用于分页的保留属性名 ##
 
 下面的属性位于*data*对象中，用来给一列数据分页。一些语言和概念是从OpenSearch规范中借鉴过来的。
 
@@ -606,7 +606,7 @@ JSON对象的*data*属性可能包含以下属性。
 
 在这份指南的最后可以找到如何使用这些属性来实现分页的例子。
 
-###data.currentItemCount###
+### data.currentItemCount ###
 
 	属性值类型: 整数(integer)
 	父节点: data
@@ -623,7 +623,7 @@ JSON对象的*data*属性可能包含以下属性。
 	  }
 	}
 	
-###data.itemsPerPage###
+### data.itemsPerPage ###
 
 	属性值类型: 整数(integer)
 	父节点: data
@@ -638,7 +638,7 @@ items结果的数目。未必是data.items数组的大小；如果我们查看�
 	  }
 	}
 	
-###data.startIndex###
+### data.startIndex ###
 
 	属性值类型: 整数(integer)
 	父节点: data
@@ -653,7 +653,7 @@ data.items中第一个条目的索引。为了一致，*startIndex*应从1开始
 	  }
 	}
 	
-###data.totalItems###
+### data.totalItems ###
 
 	属性值类型: 整数(integer)
 	父节点: data
@@ -668,7 +668,7 @@ data.items中第一个条目的索引。为了一致，*startIndex*应从1开始
 	  }
 	}
 	
-###data.pagingLinkTemplate###
+### data.pagingLinkTemplate ###
 
 	属性值类型: 字符串(string)
 	父节点: data
@@ -683,7 +683,7 @@ URL模板指出用户可以如何计算随后的分页链接。URL模板中也�
 	  }
 	}
 	
-###data.pageIndex###
+### data.pageIndex ###
 
 	属性值类型: 整数(integer)
 	父节点: data
@@ -698,7 +698,7 @@ URL模板指出用户可以如何计算随后的分页链接。URL模板中也�
 	  }
 	}
 	
-###data.totalPages###
+### data.totalPages ###
 
 	属性值类型: 整数(integer)
 	父节点: data
@@ -713,11 +713,11 @@ URL模板指出用户可以如何计算随后的分页链接。URL模板中也�
 	  }
 	}
 
-##用于链接的保留属性名##
+## 用于链接的保留属性名 ##
 
 下面的属性位于*data*对象中，用来表示对其他资源的引用。有两种形式的链接属性：1）对象，它可以包含任何种类的引用（比如JSON-RPC对象），2)URL字符串，表示资源的URIs(后缀总为'Link')。
 
-###data.self / data.selfLink###
+### data.self / data.selfLink ###
 
 	属性值类型: 对象(object)/字符串(string)
 	父节点: data
@@ -733,7 +733,7 @@ URL模板指出用户可以如何计算随后的分页链接。URL模板中也�
 	  }
 	}
 
-###data.edit / data.editLink###
+### data.edit / data.editLink ###
 
 	属性值类型: 对象(object)/字符串(string)
 	父节点: data
@@ -749,7 +749,7 @@ URL模板指出用户可以如何计算随后的分页链接。URL模板中也�
 	  }
 	}
 
-###data.next / data.nextLink###
+### data.next / data.nextLink ###
 
 	属性值类型: 对象(object)/字符串(string)
 	父节点: data
@@ -765,7 +765,7 @@ URL模板指出用户可以如何计算随后的分页链接。URL模板中也�
 	  }
 	}
 
-###data.previous / data.previousLink###
+### data.previous / data.previousLink ###
 
 	属性值类型: 对象(object)/字符串(string)
 	父节点: data
@@ -784,7 +784,7 @@ URL模板指出用户可以如何计算随后的分页链接。URL模板中也�
 ##错误对象中的保留属性名##
 JSON对象的*error*属性应包含以下属性。
 
-###error.code###
+### error.code ###
 
 	属性值类型: 整数(integer)
 	父节点: error
@@ -799,7 +799,7 @@ JSON对象的*error*属性应包含以下属性。
 	  }
 	}
 
-###error.message###
+### error.message ###
 
 	属性值类型: 字符串(string)
 	父节点: error
@@ -814,7 +814,7 @@ JSON对象的*error*属性应包含以下属性。
 	  }
 	}	
 
-###error.errors###
+### error.errors ###
 
 	属性值类型: 数组(array)
 	父节点: error
@@ -825,7 +825,7 @@ JSON对象的*error*属性应包含以下属性。
 
 	{ "error": { "errors": [] } }	
 	
-###error.errors[].domain###
+### error.errors[].domain ###
 
 	属性值类型: 字符串(string)
 	父节点: error.errors
@@ -840,7 +840,7 @@ JSON对象的*error*属性应包含以下属性。
 	  }
 	}
 	
-###error.errors[].reason###
+### error.errors[].reason ###
 
 	属性值类型: 字符串(string)
 	父节点: error.errors
@@ -855,7 +855,7 @@ JSON对象的*error*属性应包含以下属性。
 	  }
 	}
 
-###error.errors[].message###
+### error.errors[].message ###
 
 	属性值类型: 字符串(string)
 	父节点: error.errors
@@ -872,7 +872,7 @@ JSON对象的*error*属性应包含以下属性。
 	  }
 	}		
 
-###error.errors[].location###
+### error.errors[].location ###
 
 	属性值类型: 字符串(string)
 	父节点: error.errors
@@ -887,7 +887,7 @@ JSON对象的*error*属性应包含以下属性。
 	  }
 	}
 	
-###error.errors[].locationType###
+### error.errors[].locationType ###
 
 	属性值类型: 字符串(string)
 	父节点: error.errors
@@ -902,7 +902,7 @@ JSON对象的*error*属性应包含以下属性。
 	  }
 	}
 
-###error.errors[].extendedHelp###
+### error.errors[].extendedHelp ###
 
 	属性值类型: 字符串(string)
 	父节点: error.errors
@@ -917,7 +917,7 @@ help text的URI，使错误更易于理解。
 	  }
 	}
 
-###error.errors[].sendReport###
+### error.errors[].sendReport ###
 
 	属性值类型: 字符串(string)
 	父节点: error.errors
@@ -932,16 +932,16 @@ report form的URI，服务用它来收集错误状态的数据。该URL会预先
 	  }
 	}
 
-##属性顺序##
+## 属性顺序 ##
 在JSON对象中属性可有任意顺序。然而，在某些情况下，有序的属性可以帮助分析器快速解释数据，并带来更好的性能。在移动环境下的解析器就是个例子，在这种情况下，性能和内存是至关重要的，不必要的解析也应尽量避免。
 
-###Kind属性###
+### Kind属性 ###
 
 **Kind属性应为第一属性**
 
 假设一个解析器负责将一个原始JSON流解析成一个特定的对象。*kind*属性会引导解析器将适合的对象实例化。因而它应该是JSON对象的第一个属性。这仅适用于对象有一个kind属性的情况(通常可以在*data*和*items*属性中找到)。
 
-###Items属性###
+### Items属性 ###
 **_items_应该是_data_对象的最后一个属性**
 
 这使得阅读每一个具体条目前前已读所有的集合属性。在有很多条目的情况下，这样就避免了开发人员只需要从数据的字段时不必要的解析这些条目。
@@ -968,8 +968,8 @@ report form的URI，服务用它来收集错误状态的数据。该URL会预先
 	}
 
 
-##示例##
-###YouTube JSON API###
+## 示例 ##
+### YouTube JSON API ###
 
 这是YouTube JSON API响应对象的示例。你可以从中学到更多关于YouTube JSON API的内容：[http://code.google.com/apis/youtube/2.0/developers_guide_jsonc.html](http://code.google.com/apis/youtube/2.0/developers_guide_jsonc.html)
 
@@ -1020,7 +1020,7 @@ report form的URI，服务用它来收集错误状态的数据。该URL会预先
 	  }
 	}
 	
-###分页示例###
+### 分页示例 ###
 
 如何将Google搜索条目作为JSON对象展现出来，对分页变量也有特别关注。
 
@@ -1070,8 +1070,8 @@ report form的URI，服务用它来收集错误状态的数据。该URL会预先
 	* Index #3 = 3 * itemsPerPage = 20
 	* Index #N = N * itemsPerPage
 
-##附录##
-###附录A:JavaScript中的保留字###
+## 附录 ##
+### 附录A:JavaScript中的保留字 ###
 **下列JavaScript保留字应该避免在属性名中使用**
 
 下面的清单是JavaScript中的保留字，并不能通过点访问符访问。这份清单集合了当前最新的关键字，该清单可能会根据具体的执行环境而有所变更。
